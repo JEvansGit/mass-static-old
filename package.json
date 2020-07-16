@@ -1,0 +1,11 @@
+{
+  "name": "static",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "gulp": "3.9.1",
+    "gulp-cli": "2.0.1",
+    "gulp-sass": "4.0.2",
+    "node-normalize-scss": "8.0.0"
+  }
+}

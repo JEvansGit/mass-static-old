@@ -1,0 +1,769 @@
+@import "normalize";
+@import "mixins";
+
+$primary-color: #222;
+$secondary-color: #fefefe;
+$text-color-dark: #454545;
+$text-color-light: #efefef;
+
+/*
+ * Global styles
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+tr,
+th,
+input,
+a {
+    font-family: 'Lato', sans-serif;
+    color: $text-color-dark;
+}
+
+a {
+    color: darken(#ff183e, 30%);
+
+    &:hover {
+        color: #ff183e;
+    }
+}
+
+p {
+    line-height: 1.5;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: 300;
+}
+
+body {
+    background-color: $secondary-color;
+}
+
+#page {
+    padding: 15px;
+    width: 1100px;
+    margin: 30px auto;
+
+    h1 {
+        margin: 0;
+    }
+}
+
+//Heading "LIVE"
+.is-live {
+    &::after {
+        content: "LIVE";
+        background: #000;
+        color: #fff;
+        font-size: 20px;
+        padding: 3px;
+        vertical-align: middle;
+        margin-left: 15px;
+    }
+}
+
+.nav {
+    z-index: 1;
+    background: linear-gradient(lighten($primary-color, 10%), $primary-color);
+    display: flex;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
+
+    &__link {
+        color: #fff;
+        text-decoration: none;
+        padding: 23px 0;
+        width: 110px;
+        text-align: center;
+        font-size: 15px;
+        text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+
+        &__active {
+            font-weight: 700;
+            border-bottom: solid 2px #fff;
+        }
+
+        &:nth-child(1) {
+            background: url('../img/logo.svg') no-repeat center;
+            @include hide-text;
+            padding: 0;
+            width: 200px;
+        }
+
+        &:hover {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.20);
+        }
+    }
+}
+
+.button {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 15px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.80);
+    font-weight: 300;
+    cursor: pointer;
+
+    &--add {
+        background: rgba(0, 0, 0, 0.70) url('../img/add-icon.png') no-repeat 10% 50%;
+        padding-left: 40px;
+        color: #fff;
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.50) url('../img/add-icon.png') no-repeat 10% 50%;
+            color: #fff;
+        }
+    }
+
+    &--remove {
+        background: rgb(205, 0, 0) url('../img/remove-icon.png') no-repeat 12% 50%;
+        padding-left: 40px;
+
+        &:hover {
+            background: rgb(255, 0, 0) url('../img/remove-icon.png') no-repeat 12% 50%;
+            color: #fff;
+        }
+    }
+
+    &--close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        box-shadow: none;
+        background: transparent url('../img/remove-icon.png') no-repeat 12% 47%;
+        padding: 10px 10px 10px 25px;
+        font-size: 14px;
+        border: solid 1px #fff;
+        border-radius: 32px;
+
+        &:hover {
+            background: rgba(0,0,0,0.15) url('../img/remove-icon.png') no-repeat 12% 47%;
+            color: #fff;
+        }
+
+
+    }
+
+    &--download {
+        background: transparent url('../img/download-icon.png') no-repeat 12% 50%;
+        padding-left: 40px;
+        color: #888;
+        font-weight: 700;
+        box-shadow: none;
+        margin-right: 15px;
+        font-size: 14px;
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.50) url('../img/download-icon.png') no-repeat 12% 50%;
+            color: #fff;
+        }
+    }
+
+    &--login {
+        font-family: 'Lato', sans-serif;
+        border: solid 0.01em;
+        padding: 20px 50px;
+        font-size: 20px;
+        color: #888;
+
+        &:hover {
+            background: rgba(0,0,0,0.05);
+            color: #000;
+        }
+    }
+}
+
+/*
+  * Page specific
+  */
+// Index
+#index  {
+    background: url('../img/background.jpg') no-repeat center center fixed;
+    @include background-size(cover);
+
+    img {
+        width: 100%;
+    }
+
+    #page {
+        color : #fff;
+    }
+}
+
+.login-box {
+    background: #fff;
+    box-shadow: 0 0 3px rgba(0,0,0,0.86);
+    padding: 40px;
+    width: 360px;
+    margin: 100px  auto;
+
+    h1 {
+        background: url('../img/logo--dark.svg') no-repeat center;
+        @include hide-text;
+    }
+
+    input[type="text"], input[type="password"] {
+        border: 0;
+        border-bottom: solid 2px #bcbcbc;
+        color: #3c3c3c;
+        padding: 5px 15px;
+        width: 80%;
+        margin: 30px auto;
+        display: block;
+
+        &:focus {
+            border-bottom:solid 2px #222;
+            color: #222;
+            padding: 5px 0px;
+        }
+    }
+
+    .button--login {
+        display: block;
+        text-align: center;
+        width: 200px;
+        margin: 50px auto;
+        border:solid 1px #ccc;
+        box-shadow: 0 0 2px rgba(0,0,0,0.30);
+    }
+}
+// Live
+.cameras {
+    display: flex;
+    margin: 20px 0;
+
+    &__links {
+        margin-left: auto;
+        align-self: center;
+        display: flex;
+
+        &__actions {
+            &__action {
+                vertical-align: middle;
+                @extend .button;
+                background: #efefef;
+                border-top: solid 1px #fff;
+                padding: 15px 20px;
+                color: #444;
+                float: right;
+            }
+        }
+
+        &__link {
+            margin-left: 30px;
+            padding: 15px 20px;
+            font-size: 14px;
+            border-radius: 32px;
+            text-decoration: none;
+            color: #565656;
+            font-weight: 400;
+            cursor: pointer;
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.15);
+                color: #454545;
+            }
+        }
+    }
+}
+
+.camera-video {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.75);
+
+    img {
+        display: block;
+        width: 100%;
+    }
+}
+
+.camera-actions {
+    margin: 20px 0;
+
+    &__action {
+        &:nth-child(1) {
+            margin-right: 10px;
+        }
+    }
+}
+
+.notice {
+    display: block;
+    padding: 100px;
+    margin: 50px 0;
+    border: solid 1px #aaa;
+    clear: both;
+
+    h2 {
+        background: url('../img/logo--dark.svg') no-repeat;
+        @include hide-text;
+    }
+}
+
+.on {
+    display: block !important;
+}
+
+.btn-add-window {
+    width: 280px;
+    @include animation-name(window-fade-in);
+    @include animation-duration(0.6s);
+    @include animation-fill-mode(forwards);
+    display: none;
+    border-radius: 3px;
+    background: #454545;
+    border-top: solid 1px #444;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+    position: absolute;
+    font-family: 'Lato', sans-serif;
+    margin-top: -130px;
+    margin-left: -10px;
+    color: #fff;
+
+    &__progress-bar {
+        background: #888;
+        width: 100%;
+        margin-top: 5px;
+        height: 6px;
+        display: block;
+        border-radius: 32px;
+
+        &__progress {
+            background: linear-gradient(#fff, #bcbcbc);
+            height: 100%;
+            width: 0%;
+            border-radius: 32px;
+        }
+    }
+}
+
+@include keyframes(window-fade-in) {
+    1% {
+        opacity: 0;
+        transform: scale(0.1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#btn-add-window-info {
+    color: #fff;
+    font-size: 14px;
+}
+
+.camera-item {
+    display: flex;
+    font-size: 14px;
+    padding: 15px;
+
+    &:hover {
+        background: rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+    }
+
+    &:active {
+        @include animation-name(pulse);
+        @include animation-duration(0.5s);
+        @include animation-fill-mode(forwards);
+    }
+}
+
+@keyframes pulse {
+    1% {
+        background: transparent;
+    }
+
+    15% {
+        background: rgba(0, 0, 0, 0.40);
+    }
+
+    100% {
+        background: transparent;
+    }
+}
+
+.camera-button {
+    @include hide-text;
+    margin-left: 15px;
+    margin-top: -15px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.notification {
+    @include animation-name(drop-down);
+    @include animation-duration(2s);
+    @include animation-fill-mode(forwards);
+    color: #fefefe;
+    padding: 15px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    padding-left: 70px;
+
+    &--add {
+        background: url('../img/tick-icon.png') no-repeat 20px 10px lightseagreen;
+    }
+
+    &--remove {
+        background: url('../img/cross-icon.png') no-repeat 20px 10px #ff183e;
+    }
+}
+
+
+.mobile-nav {
+    display: none;
+    @include hide-text;
+    background: url('../img/logo.svg') no-repeat 90px 23px #3c3c3c;
+    height: 70px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.75);
+
+    .bar + .bar {
+       margin-top: 4px;
+    }
+
+    .hamburger {
+        cursor: pointer;
+        width: 10px;
+        padding: 27px;
+    }
+}
+
+.bar {
+    background: #fff;
+    height: 2px;
+    width: 17px;
+}
+
+
+@include keyframes(drop-down) {
+    1% {
+        transform: translateY(-200px);
+    }
+
+    5% {
+        transform: translateY(0px);
+    }
+
+    90% {
+        transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(-200px);
+    }
+}
+
+.txtCamera {
+    font-size: 14px;
+    background: none;
+    border: 0;
+    border-bottom: solid 2px #ccc;
+    padding: 15px;
+    color: #ccc;
+    width: 80%;
+    box-sizing: border-box;
+
+    @include animation-name (slide-from-left);
+    @include animation-duration(0.2s);
+    @include animation-fill-mode(forwads);
+
+
+    &:hover {
+        border-bottom: solid 2px #fff;
+        color: #fff;
+    }
+    &:focus {
+        background: rgba(255,255,255,0.15);
+    }
+}
+
+.btnSave {
+    float: right;
+    background: #111;
+    cursor: pointer;
+    @include hide-text;
+    background: #232323 url('../img/plus-icon.png') no-repeat 15px;
+    width: 38px;
+    height: 38px;
+    border-radius: 32px;
+    margin-top: 5px;
+    
+    @include animation-name (slide-from-right);
+    @include animation-duration(0.3s);
+    @include animation-fill-mode(forwads);
+
+    &:hover {
+        background: #333 url('../img/plus-icon.png') no-repeat 15px;
+    }
+
+}
+
+// Recordings
+.recordings {
+    background: #fff;
+    box-shadow: 0 0 2px rgba(0,0,0,0.30);
+    width: 100%;
+    border-collapse: collapse;
+
+
+    tr {
+        padding: 15px;
+        cursor: pointer;
+    }
+
+    td {
+        padding: 20px;
+    }
+
+    th {
+        padding: 20px;
+        border-bottom: solid 1px #c3c3c3;
+        text-align: left;
+    }
+
+    &__actions {
+        float: right;
+        margin: 30px 0;
+    }
+}
+
+.can-collapse {
+    background: #eee url('../img/expand-icon.png')  no-repeat 97% 50%;
+    border-bottom: solid 1px #aaa;
+}
+
+.can-collapse-content {
+    @include animation-name(slide-from-top);
+    @include animation-fill-mode(forwards);
+    @include animation-duration(0.15s);
+}
+
+.expand-row {
+    border-top: solid 1px #aaa;
+    border-bottom: solid 1px #aaa;
+    cursor: pointer;
+    color: #fff;
+ }
+
+.row-info {
+    background: #333;
+    color: #fff;
+    padding: 30px;
+    
+    a {
+        color: #dedede;
+    }
+
+    img {
+        float: left;
+        margin-right: 30px;
+        width: 660px;
+
+    }
+
+    p {
+        color: #fff;
+    }
+}
+@media (max-width: 1400px) {
+    .btn-add-window {
+        margin-left: -25px;
+    }
+
+    #page {
+        width: 86%;
+        padding: 0;
+        margin: 30px auto;
+    }
+
+    .camera-video {
+        width: 100%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .camera-actions {
+        margin-right: 30px;
+    }
+
+    .cameras__links {
+        margin-right: 30px;
+        padding: 15px 5px;
+    }
+}
+
+@media (max-width: 852px) {
+    .cameras__links__link {
+        margin-left: 0;
+    }
+
+    .cameras__links {
+        margin-left: 0;
+    }
+
+    .row-info img{
+        width: 98%;
+    }
+
+}
+
+@include keyframes(slide-from-left) {
+    1% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+@include keyframes(slide-from-right) {
+    1% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+@include keyframes(slide-from-top) {
+    1% {
+        transform: translateY(-07%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+
+// Tablets & Mobile
+@media (max-width: 768px) {
+    .mobile-nav {
+        display: block;
+        background: url("../img/logo.svg") no-repeat 90px 20px #3c3c3c;
+    }
+
+    .nav {
+        @include animation-name(slide-from-left);
+        @include animation-duration(0.5s);
+        @include animation-fill-mode(forwards);
+        top: 0;
+        position: absolute;
+        flex-direction: column;
+        background: #2e2e2e;
+        height: 100%;
+        width: 60%;
+
+        &__link {
+            width: 100%;
+            padding: 20px 0;
+            border-bottom: solid 1px #444;
+
+            &:nth-child(1) {
+                width: 100%;
+                height: 100px;
+            }
+        }
+    }
+
+    .recordings {
+        td {
+            padding: 20px 15px;
+        }
+        font-size: 13px;
+
+        th:nth-child(1) {
+            width: 5px;
+        }
+
+        th:nth-child(2) {
+            width: 15px;
+        }
+    }
+
+    .notice {
+        padding: 30px 15px;
+    }
+ }
+
+@media (max-width: 660px) {
+    .cameras {
+        flex-direction: column;
+
+        h1 {
+            width: 100%;
+            font-size: 30px;
+            margin: 10px 0 !important;
+        }
+
+        &__links {
+            &__link {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+    }
+}
+
+@media (max-width: 460px) {
+    .login-box {
+        width: 97%;
+        padding: 18px;
+        box-sizing: border-box;
+        margin: 30px auto;
+    }
+}
+
+@media (max-width: 430px) {
+    .cameras__links {
+        text-align: center;
+        @include columns(70px, 2);
+
+        &__link {
+            padding: 10px;
+            display: block;
+        }
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+::selection {
+    background: black;
+    color: white;
+}
+
+::-moz-selection {
+    background: black;
+    color: white;
+}
+
+input {outline: none;}
+
+.camera-ip {
+    background: #fff;
+    border: solid 1px #ccc;
+    display: inline-block;
+    font-size: 13px;
+    padding: 5px 20px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.1);
+    color: #777;
+}
